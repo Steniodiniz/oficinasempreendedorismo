@@ -1,0 +1,306 @@
+Here is an HTML document that transforms your financial management workshop into a comprehensive, presentation-ready guide with all demonstrative tables and visual assets for each module.
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Start BSB · Oficina Gestão Financeira · Material do Participante</title>
+  <!-- Tailwind + Chart.js + Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Plus Jakarta Sans', system-ui, 'Inter', sans-serif; background: #f8fafc; }
+    .card-glass { transition: all 0.2s ease; }
+    .card-glass:hover { transform: translateY(-3px); box-shadow: 0 24px 36px -12px rgba(0, 0, 0, 0.15); }
+    .table-demo th { background-color: #f1f5f9; font-weight: 600; }
+    .badge-module { background: #eef2ff; color: #1e40af; font-weight: 600; }
+    hr { margin: 1rem 0; }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Cabeçalho fixo -->
+  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-gray-200/80 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex flex-wrap justify-between items-center gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-blue-700 rounded-xl flex items-center justify-center shadow-md">
+          <span class="text-white font-bold text-lg">📘</span>
+        </div>
+        <div>
+          <h1 class="font-bold text-slate-800 text-lg tracking-tight">START BSB · <span class="text-blue-600">Oficina de Gestão Financeira</span></h1>
+          <p class="text-xs text-slate-500 hidden sm:block">A Jornada de Lucas Mendes — Do caos financeiro à gestão organizada</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 text-xs font-medium">
+        <span class="bg-slate-100 px-3 py-1.5 rounded-full text-slate-700">⏱ 3 horas</span>
+        <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full">📋 9 módulos + checklist</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-10 space-y-20">
+
+    <!-- Sessão de abertura: Personagem Lucas Mendes -->
+    <section class="grid md:grid-cols-5 gap-8 items-start">
+      <div class="md:col-span-3 space-y-5">
+        <div class="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-1.5 rounded-full text-sm font-semibold">
+          <span class="w-2 h-2 bg-blue-600 rounded-full"></span> Quem é Lucas Mendes?
+        </div>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">👤 Desenvolvedor, empreendedor, <span class="text-blue-700">apaixonado por tecnologia</span></h2>
+        <p class="text-lg text-slate-600 leading-relaxed">Lucas, 27 anos, cria um SaaS de agendamento para clínicas. Brilhante no código, mas sem controle financeiro — enfrenta o caos dos gastos, mas com método transforma a startup e conquista investidores. Sua jornada é o fio condutor da oficina.</p>
+        <div class="bg-white rounded-2xl shadow-md p-5 border-l-4 border-blue-500">
+          <p class="italic text-slate-700">“Lucas não sabia pra onde o dinheiro ia, misturava custos, despesas e investimentos. Até que decidiu organizar.”</p>
+        </div>
+      </div>
+      <div class="md:col-span-2 bg-gradient-to-br from-slate-700 to-slate-900 rounded-3xl shadow-xl p-6 text-white">
+        <div class="flex items-center gap-2 text-amber-300 text-sm font-mono">📌 LINHA DO TEMPO DA JORNADA</div>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex gap-2">🚀 <span>Subvenção recebida – empolgação inicial</span></li>
+          <li class="flex gap-2">💸 <span>Compras impulsivas: computador, nuvem, coworking</span></li>
+          <li class="flex gap-2">📉 <span>Primeiro cliente, mas fluxo de caixa confuso</span></li>
+          <li class="flex gap-2">📊 <span>Plano de contas + DRE + Balanço estruturados</span></li>
+          <li class="flex gap-2">🏆 <span>Investidor aporta por ver gestão organizada</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Módulo 1 – Custo, Despesa ou Investimento (tabela demonstrativa) -->
+    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
+      <div class="flex items-center gap-3 border-b pb-4 border-slate-200">
+        <span class="text-3xl">💸</span>
+        <h2 class="text-2xl font-bold text-slate-800">Módulo 1 · Custo, Despesa ou Investimento?</h2>
+      </div>
+      <p class="text-slate-600 mt-4">Lucas não sabia classificar seus gastos. Veja a tabela demonstrativa dos três tipos de desembolso e exemplos práticos da sua operação.</p>
+      <div class="overflow-x-auto mt-6">
+        <table class="min-w-full bg-white border border-slate-200 rounded-2xl text-sm">
+          <thead>
+            <tr class="bg-slate-100"><th class="p-3 text-left">Tipo</th><th class="p-3 text-left">Definição</th><th class="p-3 text-left">Exemplo no caso de Lucas</th><th class="p-3 text-left">Impacto no Resultado</th></tr>
+          </thead>
+          <tbody class="divide-y">
+            <tr class="hover:bg-slate-50"><td class="p-3 font-bold text-blue-700">CUSTO</td><td>Diretamente ligado à entrega do produto/serviço</td><td>Hospedagem AWS, Gateway de pagamento, licença técnica</td><td>Reduz o lucro (DRE)</td></tr>
+            <tr class="hover:bg-slate-50"><td class="p-3 font-bold text-amber-700">DESPESA</td><td>Manutenção da estrutura, não depende do volume</td><td>Aluguel coworking, contador, ferramentas administrativas</td><td>Reduz o lucro (DRE)</td></tr>
+            <tr class="hover:bg-slate-50"><td class="p-3 font-bold text-emerald-700">INVESTIMENTO</td><td>Bem que trará benefício futuro (+1 ano)</td><td>Computador novo (R$6.000), móveis, equipamentos</td><td>Não afeta o resultado (vira ativo imobilizado)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-5 bg-slate-50 p-4 rounded-xl text-sm"><span class="font-bold">📌 Tabela resumo de classificação:</span> Lucas inicialmente jogou o computador como despesa — erro comum que distorce o lucro do mês. Investimento entra no balanço e é depreciado.</div>
+    </section>
+
+    <!-- Módulo 2 – A Primeira Receita (tabela MRR, Setup, Financeira + indicadores) -->
+    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
+      <div class="flex items-center gap-3 border-b pb-4"><span class="text-3xl">💰</span><h2 class="text-2xl font-bold">Módulo 2 · A Primeira Receita</h2></div>
+      <p class="text-slate-600">Lucas conquista a Clínica Vida Nova. Aprenda os tipos de receita e os indicadores essenciais para SaaS.</p>
+      <div class="grid md:grid-cols-2 gap-6 mt-5">
+        <div>
+          <table class="w-full text-sm border border-slate-200">
+            <thead class="bg-blue-50"><tr><th class="p-2">Tipo de Receita</th><th class="p-2">Descrição</th><th class="p-2">Exemplo numérico</th></tr></thead>
+            <tbody>
+              <tr><td class="p-2 font-semibold">MRR (Recorrente)</td><td>Mensalidade previsível</td><td class="font-mono">R$ 300/cliente</td></tr>
+              <tr><td class="p-2 font-semibold">Setup / Implantação</td><td>Taxa única inicial</td><td class="font-mono">R$ 500 (primeiro mês)</td></tr>
+              <tr><td class="p-2 font-semibold">Receita Financeira</td><td>Rendimento de aplicações</td><td class="font-mono">R$ 45 (CDB)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="bg-slate-100 p-4 rounded-xl"><span class="font-bold">📊 Indicadores de Saúde:</span><ul class="mt-2 text-sm space-y-1"><li>• MRR (Monthly Recurring Revenue) = R$ 3.000 (10 clientes × R$300)</li><li>• ARR = MRR × 12 = R$ 36.000</li><li>⚠️ Não somar receita de setup ao MRR — distorce análise de crescimento recorrente.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- Módulo 3 – Plano de Contas Gerencial (tabela completa) -->
+    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
+      <div class="flex items-center gap-3 border-b pb-4"><span class="text-3xl">📋</span><h2 class="text-2xl font-bold">Módulo 3 · Plano de Contas Gerencial</h2></div>
+      <p class="mb-4">A estrutura hierárquica que organiza todas as movimentações financeiras. Versão inicial de Lucas (categorias essenciais).</p>
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm border">
+          <thead class="bg-slate-100"><tr><th>Código</th><th>Conta</th><th>Sinal</th><th>Exemplo prático</th></tr></thead>
+          <tbody>
+            <tr><td class="p-2">01</td><td class="font-mono">RECEITA</td><td class="text-emerald-600">(+)</td><td>Mensalidades SaaS, Setup</td></tr>
+            <tr><td class="p-2">02</td><td>Impostos sobre Receita</td><td class="text-rose-600">(−)</td><td>ISS / Simples Nacional</td></tr>
+            <tr><td class="p-2">03</td><td>Custos (nuvem, gateway)</td><td class="text-rose-600">(−)</td><td>AWS, taxas de pagamento</td></tr>
+            <tr><td class="p-2">04</td><td>Despesas (Vendas, Marketing, Admin, Gerais)</td><td class="text-rose-600">(−)</td><td>Contador, coworking, anúncios</td></tr>
+            <tr><td class="p-2">05</td><td>Resultado Financeiro</td><td class="text-amber-600">(+/−)</td><td>Rendimentos / juros</td></tr>
+            <tr class="bg-slate-50"><td class="p-2">08</td><td>Investimentos Imobilizado</td><td class="text-rose-600">(−)</td><td>Computador, móveis (não afeta DRE)</td></tr>
+            <tr class="bg-slate-50"><td class="p-2">12</td><td>Aportes de Capital</td><td class="text-emerald-600">(+)</td><td>Subvenção, injeção de sócios</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-4 text-sm text-slate-500 bg-blue-50 p-3 rounded-xl">✔️ Plano gerencial é personalizável, diferente do plano contábil obrigatório. As contas 07 a 12 afetam o CAIXA mas não o LUCRO.</div>
+    </section>
+
+    <!-- Módulo 4 – Fluxo de Caixa e Conciliação Bancária (tabelas + gráfico) -->
+    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
+      <div class="flex items-center gap-3"><span class="text-3xl">🏦</span><h2 class="text-2xl font-bold">Módulo 4 · Fluxo de Caixa + Conciliação Bancária</h2></div>
+      <p class="mt-2">Base de dados de Lucas: cada movimentação classificada por plano de contas e datas de pagamento.</p>
+      <div class="overflow-x-auto mt-4">
+        <table class="min-w-full text-xs md:text-sm border">
+          <thead class="bg-slate-100"><tr><th>Data Pgto</th><th>Valor (R$)</th><th>Plano de Contas</th><th>Observação</th></tr></thead>
+          <tbody>
+            <tr><td class="p-2">20/03</td><td class="font-mono">+300,00</td><td>01.01 Receita SaaS</td><td>Mensalidade Clínica Vida Nova</td></tr>
+            <tr><td class="p-2">20/03</td><td class="font-mono">+500,00</td><td>01.02 Setup</td><td>Implantação</td></tr>
+            <tr><td class="p-2">05/03</td><td class="font-mono text-rose-600">-850,00</td><td>03.01 Custo Nuvem</td><td>AWS março</td></tr>
+            <tr><td class="p-2">10/03</td><td class="font-mono text-rose-600">-900,00</td><td>04.04 Desp. Gerais</td><td>Coworking</td></tr>
+            <tr><td class="p-2">20/03</td><td class="font-mono text-rose-600">-6.000,00</td><td>08 Investimento</td><td>Computador novo (imobilizado)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid md:grid-cols-2 gap-5 mt-6">
+        <div class="bg-slate-800 text-white p-4 rounded-2xl"><span class="font-bold">💧 Fluxo Realizado (março)</span><p class="text-sm">Entradas: R$800 | Saídas: R$8.100 → Saldo negativo, mas R$6.000 foi investimento.</p></div>
+        <div class="bg-blue-50 p-4 rounded-2xl"><span class="font-bold">🔮 Fluxo Projetado (abril)</span><p class="text-sm">MRR esperado: R$1.200 + setup R$500. Custos fixos R$2.050. Projeção evita surpresas.</p></div>
+      </div>
+      <canvas id="fluxoRealChart" class="mt-6 max-h-56" width="500" height="220"></canvas>
+      <p class="text-xs text-center text-slate-500 mt-2">Gráfico: entradas e saídas reais de Lucas (Janeiro a Março) – destaque para o impacto do investimento em março.</p>
+    </section>
+
+    <!-- Módulo 5 – Precificação e Custeio Variável (Tabela fixos x variáveis + MC + ponto equilíbrio) -->
+    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
+      <div class="flex items-center gap-3"><span class="text-3xl">📊</span><h2 class="text-2xl font-bold">Módulo 5 · Precificação e Custeio Variável</h2></div>
+      <p class="mb-3">Lucas estruturou os planos Bronze, Prata e Ouro. Para definir preços, separou custos fixos de variáveis.</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-bold text-md">📌 Custos Fixos vs. Variáveis (Lucas)</h3>
+          <table class="w-full text-sm border mt-2">
+            <thead><tr class="bg-slate-100"><th>Item</th><th>Valor (R$)</th><th>Natureza</th></tr></thead>
+            <tbody>
+              <tr><td>AWS (nuvem)</td><td>850,00</td><td>Variável (cresce com clientes)</td></tr>
+              <tr><td>Gateway %</td><td>2% s/ receita</td><td>Variável</td></tr>
+              <tr><td>Contador</td><td>350,00</td><td>Fixo</td></tr>
+              <tr><td>Coworking</td><td>900,00</td><td>Fixo</td></tr>
+              <tr><td>Marketing digital</td><td>500,00</td><td>Fixo</td></tr>
+              <tr class="font-semibold"><td>TOTAL FIXO MENSAL</td><td>R$ 2.050</td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3 class="font-bold">🥇 Plano Prata (exemplo)</h3>
+          <p>Preço: R$ 299,90 | Custo variável ~R$60 (gateway + nuvem proporcional)</p>
+          <p>Margem de Contribuição (MC) = R$ 239,90 | IMC = 80%</p>
+          <p class="font-mono bg-slate-100 p-2 rounded">Ponto de Equilíbrio = R$ 2.050 / R$ 239,90 ≈ 8,5 → 9 clientes</p>
+          <div class="mt-3 text-xs bg-amber-50 p-2 rounded">⚡ Margem de Contribuição ≠ Margem Bruta (a bruta deduz todos os custos, a MC só os variáveis).</div>
+        </div>
+      </div>
+      <div class="overflow-x-auto mt-5">
+        <table class="min-w-full text-sm border">
+          <thead><tr class="bg-blue-50"><th>Plano</th><th>Preço sugerido</th><th>MC estimada</th><th>IMC (%)</th></tr></thead>
+          <tbody><tr><td>🥉 Bronze</td><td>R$ 149,90</td><td>R$ 110</td><td>73%</td></tr>
+          <tr><td>🥈 Prata</td><td>R$ 299,90</td><td>R$ 240</td><td>80%</td></tr>
+          <tr><td>🥇 Ouro</td><td>R$ 599,90</td><td>R$ 510</td><td>85%</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Módulo 6 – Forecast: Projetado vs. Realizado (tabela comparativa) -->
+    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
+      <div class="flex items-center gap-3"><span class="text-3xl">🔮</span><h2 class="text-2xl font-bold">Módulo 6 · Forecast: Projetado vs. Realizado</h2></div>
+      <p>Lucas compara mês a mês o planejado com o executado — ferramenta de aprendizado contínuo.</p>
+      <div class="overflow-x-auto mt-4">
+        <table class="min-w-full text-sm border">
+          <thead class="bg-slate-100"><tr><th>Item</th><th>Projetado Abril</th><th>Realizado Abril</th><th>Variação</th><th>Interpretação</th></tr></thead>
+          <tbody>
+            <tr><td class="p-2">MRR</td><td>R$ 1.200</td><td>R$ 1.500</td><td class="text-emerald-600">+R$ 300</td><td>✅ vendas acima da meta</td></tr>
+            <tr><td class="p-2">Setup</td><td>R$ 500</td><td>R$ 200</td><td class="text-rose-600">-R$ 300</td><td>⚠️ menos clientes novos</td></tr>
+            <tr><td class="p-2">Custo Nuvem</td><td>R$ 850</td><td>R$ 920</td><td class="text-rose-600">-R$ 70</td><td>⚠️ revisar plano AWS</td></tr>
+            <tr class="font-semibold"><td>Resultado Líquido</td><td>-R$ 1.200</td><td>-R$ 1.270</td><td class="text-rose-600">-R$ 70</td><td>necessário ajuste</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bg-slate-50 p-3 rounded-xl mt-4 text-sm">📌 Lição: comparar projeção e realizado gera ações corretivas antes de o caixa apertar.</div>
+    </section>
+
+    <!-- Módulo 7 – DRE Gerencial (tabela completa + margem comparativa) -->
+    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
+      <div class="flex items-center gap-3"><span class="text-3xl">📈</span><h2 class="text-2xl font-bold">Módulo 7 · DRE Gerencial</h2></div>
+      <p class="mb-4">Demonstração do Resultado do Exercício (regime de competência). Exemplo numérico da startup de Lucas.</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-slate-50 p-5 rounded-2xl">
+          <div class="flex justify-between border-b pb-1"><span>(+) Receita Bruta (MRR + Setup)</span><span class="font-mono">R$ 2.600</span></div>
+          <div class="flex justify-between text-rose-600"><span>(–) Impostos (10%)</span><span>-R$ 260</span></div>
+          <div class="flex justify-between font-semibold"><span>(=) Receita Líquida</span><span>R$ 2.340</span></div>
+          <div class="flex justify-between"><span>(–) Custos Totais</span><span>-R$ 920</span></div>
+          <div class="flex justify-between text-emerald-700"><span>(=) Lucro Bruto (Margem Bruta 60,7%)</span><span>R$ 1.420</span></div>
+          <div class="flex justify-between"><span>(–) Despesas Operacionais</span><span>-R$ 1.750</span></div>
+          <div class="flex justify-between border-t pt-1 font-bold"><span>Lucro Líquido do período</span><span class="text-rose-600">-R$ 330</span></div>
+        </div>
+        <div class="space-y-4">
+          <div class="bg-blue-50 p-4 rounded-xl"><span class="font-bold">📌 Caixa ≠ Competência:</span> Venda a prazo afeta DRE hoje, caixa só no futuro.</div>
+          <div class="bg-blue-50 p-4 rounded-xl"><span class="font-bold">📌 Imobilizado não é despesa:</span> Computador R$6.000 não entra na DRE como custo/despesa, fica no ativo.</div>
+          <div class="bg-blue-50 p-4 rounded-xl"><span class="font-bold">📌 Margem de Contribuição vs Margem Bruta:</span> MC = só variáveis; MB = todos custos. Diferentes análises.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Módulo 8 – Gerencial vs Contábil + checklist documentos -->
+    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
+      <div class="flex items-center gap-3"><span class="text-3xl">⚖️</span><h2 class="text-2xl font-bold">Módulo 8 · Gerencial vs. Contábil</h2></div>
+      <div class="grid md:grid-cols-2 gap-6 mt-3">
+        <div>
+          <table class="w-full text-sm border">
+            <thead class="bg-slate-100"><tr><th>Aspecto</th><th>Gestão Gerencial</th><th>Contabilidade</th></tr></thead>
+            <tbody>
+              <tr><td class="p-2">Objetivo</td><td>Tomada de decisão</td><td>Conformidade fiscal, legal</td></tr>
+              <tr><td class="p-2">Plano de Contas</td><td>Livre, adaptado</td><td>Normas (CFC, IFRS)</td></tr>
+              <tr><td class="p-2">Regime</td><td>Caixa ou Competência</td><td>Competência obrigatório</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="bg-amber-50 p-4 rounded-2xl"><span class="font-bold">📋 Checklist mensal para o contador:</span>
+          <ul class="list-disc list-inside text-sm mt-2"><li>Extratos bancários (todas contas)</li><li>Notas fiscais emitidas/recebidas</li><li>Contratos de clientes, comprovantes de pagamento</li><li>Retiradas de sócios, aportes, contratos de empréstimos</li><li>Relatório de bens (imobilizado)</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Módulo 9 – Balanço Patrimonial para Iniciantes (tabela ativo/passivo/PL + indicadores) -->
+    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
+      <div class="flex items-center gap-3"><span class="text-3xl">🏛️</span><h2 class="text-2xl font-bold">Módulo 9 · Balanço Patrimonial para Iniciantes</h2></div>
+      <p>Retrato financeiro da empresa em determinado momento. Estrutura simplificada de Lucas após os primeiros meses.</p>
+      <div class="grid md:grid-cols-2 gap-6 mt-4">
+        <div class="bg-emerald-50 p-4 rounded-xl"><span class="font-bold text-emerald-800">📦 ATIVO (o que a empresa TEM)</span>
+          <ul class="mt-2 text-sm"><li>💵 Caixa e Bancos: R$ 8.500</li><li>📆 Contas a Receber: R$ 2.400</li><li>📈 Aplicações: R$ 5.000</li><li>💻 Computador (imobilizado líquido): R$ 5.500</li><li class="font-bold mt-1">TOTAL ATIVO: R$ 21.400</li></ul>
+        </div>
+        <div class="bg-amber-50 p-4 rounded-xl"><span class="font-bold text-amber-800">📌 PASSIVO + PATRIMÔNIO LÍQUIDO</span>
+          <ul class="mt-2 text-sm"><li>🧾 Fornecedores a pagar: R$ 1.200</li><li>🏛️ Impostos a recolher: R$ 800</li><li>💼 Capital Social: R$ 22.000</li><li>📉 Prejuízos Acumulados: (R$ 600)</li><li class="font-bold mt-1">TOTAL PASSIVO + PL: R$ 21.400</li></ul>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4 mt-4 text-center text-xs font-mono bg-slate-800 text-white p-4 rounded-2xl">
+        <div>Liquidez Corrente = Ativo Circ / Passivo Circ → 15.900/2.000 = 7,95</div>
+        <div>Endividamento = Passivo Total / Ativo Total → 2.000/21.400 = 9,3%</div>
+      </div>
+    </section>
+
+    <!-- Encerramento: Checklist do Empreendedor + storyline final -->
+    <section class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-3xl shadow-2xl p-8 text-white">
+      <div class="flex items-center gap-3"><span class="text-4xl">🎯</span><h2 class="text-2xl font-bold">Encerramento · Checklist do Empreendedor Financeiramente Organizado</h2></div>
+      <p class="opacity-90 mt-2">Lucas transformou sua startup em um negócio organizado e recebeu aporte. Utilize este roteiro para os próximos 6 meses.</p>
+      <div class="grid md:grid-cols-2 gap-x-6 gap-y-2 mt-6 text-sm">
+        <div class="flex gap-2">☐ Plano de Contas Gerencial implementado</div><div class="flex gap-2">☐ Fluxo de Caixa Projetado (3 meses)</div>
+        <div class="flex gap-2">☐ Conciliação bancária semanal</div><div class="flex gap-2">☐ Ponto de equilíbrio calculado</div>
+        <div class="flex gap-2">☐ DRE Gerencial mensal</div><div class="flex gap-2">☐ Documentação completa para contador</div>
+        <div class="flex gap-2">☐ Entendo conceitos de Ativo, Passivo, PL</div><div class="flex gap-2">☐ Separo custos fixos e variáveis</div>
+      </div>
+      <p class="mt-8 text-center text-slate-200 text-sm border-t border-slate-700 pt-5 italic">“O caos financeiro não some sozinho — mas com método, ele vira clareza.”</p>
+      <p class="text-center text-xs text-slate-400 mt-3">START BSB · Jornada de Lucas Mendes — Material oficial da oficina de Gestão Financeira para Startups</p>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white mt-16 py-6 text-center text-sm text-slate-400">
+    <p>📊 Todas as tabelas e demonstrativos baseados na história de Lucas Mendes | Uso exclusivo para oficina presencial.</p>
+  </footer>
+
+  <script>
+    // Gráfico de fluxo de caixa realizado (entradas vs saídas)
+    const ctx = document.getElementById('fluxoRealChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Janeiro', 'Fevereiro', 'Março (investimento)'],
+        datasets: [
+          { label: 'Entradas (R$)', data: [350, 800, 800], backgroundColor: '#2563eb', borderRadius: 8 },
+          { label: 'Saídas (R$)', data: [1850, 2050, 8100], backgroundColor: '#ef4444', borderRadius: 8 }
+        ]
+      },
+      options: { responsive: true, maintainAspectRatio: true, plugins: { tooltip: { callbacks: { label: (ctx) => `R$ ${ctx.raw}` } } } }
+    });
+  </script>
+</body>
+</html>
+```

@@ -1,306 +1,649 @@
-Here is an HTML document that transforms your financial management workshop into a comprehensive, presentation-ready guide with all demonstrative tables and visual assets for each module.
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Start BSB · Oficina Gestão Financeira · Material do Participante</title>
-  <!-- Tailwind + Chart.js + Fonts -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Plus Jakarta Sans', system-ui, 'Inter', sans-serif; background: #f8fafc; }
-    .card-glass { transition: all 0.2s ease; }
-    .card-glass:hover { transform: translateY(-3px); box-shadow: 0 24px 36px -12px rgba(0, 0, 0, 0.15); }
-    .table-demo th { background-color: #f1f5f9; font-weight: 600; }
-    .badge-module { background: #eef2ff; color: #1e40af; font-weight: 600; }
-    hr { margin: 1rem 0; }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Do Achismo à Dor Real - Oficina Interativa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js">
+    </script>
+    <!-- Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        body {
+            background: #f8fafc;
+            color: #0f172a;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 30px -8px rgba(0, 0, 0, 0.08);
+        }
+        .step-badge {
+            background: #2563eb;
+            color: white;
+            font-weight: 700;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.9rem;
+            border-radius: 9999px;
+            letter-spacing: 0.05em;
+            display: inline-block;
+        }
+        .step-badge-outline {
+            background: #2563eb10;
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 0.65rem;
+            padding: 0.2rem 0.9rem;
+            border-radius: 9999px;
+            border: 1px solid #2563eb30;
+            display: inline-block;
+        }
+        .section-title {
+            font-weight: 800;
+            font-size: 1.8rem;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+        .section-sub {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: #0f172a;
+        }
+        .stat-number {
+            font-weight: 800;
+            font-size: 2.8rem;
+            line-height: 1;
+            color: #2563eb;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #475569;
+        }
+        .quote-mark {
+            font-size: 3.5rem;
+            line-height: 0.8;
+            color: #2563eb15;
+            font-weight: 800;
+        }
+        .flow-arrow {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            margin: 0 0.3rem;
+            font-weight: 300;
+        }
+        .presentation-box {
+            background: #f1f5f9;
+            border-radius: 1.5rem;
+            padding: 1rem 1.25rem;
+            border-left: 5px solid #2563eb;
+        }
+        .presentation-box-warning {
+            background: #fef2f2;
+            border-radius: 1.5rem;
+            padding: 1rem 1.25rem;
+            border-left: 5px solid #ef4444;
+        }
+        .presentation-box-success {
+            background: #f0fdf4;
+            border-radius: 1.5rem;
+            padding: 1rem 1.25rem;
+            border-left: 5px solid #10b981;
+        }
+        .chart-container {
+            position: relative;
+            height: 210px;
+            width: 100%;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 260px;
+            }
+        }
+        .timeline-dot {
+            width: 14px;
+            height: 14px;
+            background: #2563eb;
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+        .timeline-line {
+            width: 2px;
+            background: #e2e8f0;
+            flex-shrink: 0;
+        }
+        .group-tag {
+            background: #f1f5f9;
+            padding: 0.2rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #475569;
+        }
+        .activity-box {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 1.25rem;
+            padding: 1.25rem;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: all 0.7s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Estilo para os cards de apresentação rápida */
+        .rapid-fire {
+            background: linear-gradient(135deg, #2563eb08 0%, #2563eb02 100%);
+            border: 1px solid #2563eb20;
+        }
+        .timer-pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+    </style>
 </head>
-<body class="antialiased">
+<body>
 
-  <!-- Cabeçalho fixo -->
-  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-gray-200/80 shadow-sm">
-    <div class="max-w-7xl mx-auto px-6 py-3 flex flex-wrap justify-between items-center gap-3">
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 bg-blue-700 rounded-xl flex items-center justify-center shadow-md">
-          <span class="text-white font-bold text-lg">📘</span>
-        </div>
-        <div>
-          <h1 class="font-bold text-slate-800 text-lg tracking-tight">START BSB · <span class="text-blue-600">Oficina de Gestão Financeira</span></h1>
-          <p class="text-xs text-slate-500 hidden sm:block">A Jornada de Lucas Mendes — Do caos financeiro à gestão organizada</p>
-        </div>
-      </div>
-      <div class="flex items-center gap-2 text-xs font-medium">
-        <span class="bg-slate-100 px-3 py-1.5 rounded-full text-slate-700">⏱ 3 horas</span>
-        <span class="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full">📋 9 módulos + checklist</span>
-      </div>
-    </div>
-  </header>
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-10">
 
-  <main class="max-w-7xl mx-auto px-6 py-10 space-y-20">
+        <!-- ====== HEADER ====== -->
+        <header class="text-center space-y-3 reveal visible">
+            <span class="step-badge">OFICINA 40 MIN</span>
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#0f172a] leading-tight">
+                Do <span class="text-[#2563eb]">Achismo</span> à <span class="text-[#2563eb]">Dor Real</span>
+            </h1>
+            <p class="text-lg text-[#475569] max-w-2xl mx-auto font-medium">
+                Metodologia de Validação de Problemas com Dinâmica em Grupos
+            </p>
+            <div class="flex flex-wrap justify-center gap-2 pt-2">
+                <span class="group-tag">👥 4-5 por grupo</span>
+                <span class="group-tag">🎯 6 etapas</span>
+                <span class="group-tag">⏱️ 1 min por apresentação</span>
+            </div>
+        </header>
 
-    <!-- Sessão de abertura: Personagem Lucas Mendes -->
-    <section class="grid md:grid-cols-5 gap-8 items-start">
-      <div class="md:col-span-3 space-y-5">
-        <div class="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-1.5 rounded-full text-sm font-semibold">
-          <span class="w-2 h-2 bg-blue-600 rounded-full"></span> Quem é Lucas Mendes?
-        </div>
-        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">👤 Desenvolvedor, empreendedor, <span class="text-blue-700">apaixonado por tecnologia</span></h2>
-        <p class="text-lg text-slate-600 leading-relaxed">Lucas, 27 anos, cria um SaaS de agendamento para clínicas. Brilhante no código, mas sem controle financeiro — enfrenta o caos dos gastos, mas com método transforma a startup e conquista investidores. Sua jornada é o fio condutor da oficina.</p>
-        <div class="bg-white rounded-2xl shadow-md p-5 border-l-4 border-blue-500">
-          <p class="italic text-slate-700">“Lucas não sabia pra onde o dinheiro ia, misturava custos, despesas e investimentos. Até que decidiu organizar.”</p>
-        </div>
-      </div>
-      <div class="md:col-span-2 bg-gradient-to-br from-slate-700 to-slate-900 rounded-3xl shadow-xl p-6 text-white">
-        <div class="flex items-center gap-2 text-amber-300 text-sm font-mono">📌 LINHA DO TEMPO DA JORNADA</div>
-        <ul class="mt-4 space-y-2 text-sm">
-          <li class="flex gap-2">🚀 <span>Subvenção recebida – empolgação inicial</span></li>
-          <li class="flex gap-2">💸 <span>Compras impulsivas: computador, nuvem, coworking</span></li>
-          <li class="flex gap-2">📉 <span>Primeiro cliente, mas fluxo de caixa confuso</span></li>
-          <li class="flex gap-2">📊 <span>Plano de contas + DRE + Balanço estruturados</span></li>
-          <li class="flex gap-2">🏆 <span>Investidor aporta por ver gestão organizada</span></li>
-        </ul>
-      </div>
-    </section>
+        <!-- ====== TEMAS PARA GRUPOS ====== -->
+        <section class="card p-6 reveal">
+            <h2 class="section-sub flex items-center gap-2 text-sm uppercase tracking-wider text-[#64748b]">Escolha seu tema</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 mt-3">
+                <div class="bg-[#f1f5f9] p-3 rounded-2xl text-center hover:bg-[#2563eb] hover:text-white transition-colors cursor-default">
+                    <span class="text-2xl block">🍔</span>
+                    <span class="text-xs font-semibold">Alimentação</span>
+                </div>
+                <div class="bg-[#f1f5f9] p-3 rounded-2xl text-center hover:bg-[#2563eb] hover:text-white transition-colors cursor-default">
+                    <span class="text-2xl block">🚌</span>
+                    <span class="text-xs font-semibold">Mobilidade</span>
+                </div>
+                <div class="bg-[#f1f5f9] p-3 rounded-2xl text-center hover:bg-[#2563eb] hover:text-white transition-colors cursor-default">
+                    <span class="text-2xl block">📚</span>
+                    <span class="text-xs font-semibold">Estudo</span>
+                </div>
+                <div class="bg-[#f1f5f9] p-3 rounded-2xl text-center hover:bg-[#2563eb] hover:text-white transition-colors cursor-default">
+                    <span class="text-2xl block">💰</span>
+                    <span class="text-xs font-semibold">Finanças</span>
+                </div>
+                <div class="bg-[#f1f5f9] p-3 rounded-2xl text-center hover:bg-[#2563eb] hover:text-white transition-colors cursor-default">
+                    <span class="text-2xl block">🎮</span>
+                    <span class="text-xs font-semibold">Lazer</span>
+                </div>
+            </div>
+            <p class="text-xs text-[#64748b] mt-3 text-center">⏱️ <span class="font-semibold">2 min</span> para formar grupos e escolher o tema</p>
+        </section>
 
-    <!-- Módulo 1 – Custo, Despesa ou Investimento (tabela demonstrativa) -->
-    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
-      <div class="flex items-center gap-3 border-b pb-4 border-slate-200">
-        <span class="text-3xl">💸</span>
-        <h2 class="text-2xl font-bold text-slate-800">Módulo 1 · Custo, Despesa ou Investimento?</h2>
-      </div>
-      <p class="text-slate-600 mt-4">Lucas não sabia classificar seus gastos. Veja a tabela demonstrativa dos três tipos de desembolso e exemplos práticos da sua operação.</p>
-      <div class="overflow-x-auto mt-6">
-        <table class="min-w-full bg-white border border-slate-200 rounded-2xl text-sm">
-          <thead>
-            <tr class="bg-slate-100"><th class="p-3 text-left">Tipo</th><th class="p-3 text-left">Definição</th><th class="p-3 text-left">Exemplo no caso de Lucas</th><th class="p-3 text-left">Impacto no Resultado</th></tr>
-          </thead>
-          <tbody class="divide-y">
-            <tr class="hover:bg-slate-50"><td class="p-3 font-bold text-blue-700">CUSTO</td><td>Diretamente ligado à entrega do produto/serviço</td><td>Hospedagem AWS, Gateway de pagamento, licença técnica</td><td>Reduz o lucro (DRE)</td></tr>
-            <tr class="hover:bg-slate-50"><td class="p-3 font-bold text-amber-700">DESPESA</td><td>Manutenção da estrutura, não depende do volume</td><td>Aluguel coworking, contador, ferramentas administrativas</td><td>Reduz o lucro (DRE)</td></tr>
-            <tr class="hover:bg-slate-50"><td class="p-3 font-bold text-emerald-700">INVESTIMENTO</td><td>Bem que trará benefício futuro (+1 ano)</td><td>Computador novo (R$6.000), móveis, equipamentos</td><td>Não afeta o resultado (vira ativo imobilizado)</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="mt-5 bg-slate-50 p-4 rounded-xl text-sm"><span class="font-bold">📌 Tabela resumo de classificação:</span> Lucas inicialmente jogou o computador como despesa — erro comum que distorce o lucro do mês. Investimento entra no balanço e é depreciado.</div>
-    </section>
+        <!-- ====== ETAPA 1 ====== -->
+        <section class="reveal">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="step-badge">ETAPA 1</span>
+                <span class="text-sm font-bold text-[#2563eb]">5 min</span>
+                <span class="text-sm text-[#64748b]">O Problema do Achismo</span>
+            </div>
 
-    <!-- Módulo 2 – A Primeira Receita (tabela MRR, Setup, Financeira + indicadores) -->
-    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
-      <div class="flex items-center gap-3 border-b pb-4"><span class="text-3xl">💰</span><h2 class="text-2xl font-bold">Módulo 2 · A Primeira Receita</h2></div>
-      <p class="text-slate-600">Lucas conquista a Clínica Vida Nova. Aprenda os tipos de receita e os indicadores essenciais para SaaS.</p>
-      <div class="grid md:grid-cols-2 gap-6 mt-5">
-        <div>
-          <table class="w-full text-sm border border-slate-200">
-            <thead class="bg-blue-50"><tr><th class="p-2">Tipo de Receita</th><th class="p-2">Descrição</th><th class="p-2">Exemplo numérico</th></tr></thead>
-            <tbody>
-              <tr><td class="p-2 font-semibold">MRR (Recorrente)</td><td>Mensalidade previsível</td><td class="font-mono">R$ 300/cliente</td></tr>
-              <tr><td class="p-2 font-semibold">Setup / Implantação</td><td>Taxa única inicial</td><td class="font-mono">R$ 500 (primeiro mês)</td></tr>
-              <tr><td class="p-2 font-semibold">Receita Financeira</td><td>Rendimento de aplicações</td><td class="font-mono">R$ 45 (CDB)</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="bg-slate-100 p-4 rounded-xl"><span class="font-bold">📊 Indicadores de Saúde:</span><ul class="mt-2 text-sm space-y-1"><li>• MRR (Monthly Recurring Revenue) = R$ 3.000 (10 clientes × R$300)</li><li>• ARR = MRR × 12 = R$ 36.000</li><li>⚠️ Não somar receita de setup ao MRR — distorce análise de crescimento recorrente.</li></ul></div>
-      </div>
-    </section>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Apresentação -->
+                <div class="card p-6">
+                    <h3 class="section-sub text-base flex items-center gap-2">📊 O Maior Erro de Startups</h3>
+                    <div class="flex items-baseline gap-2 mt-3">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">das startups falham</span>
+                    </div>
+                    <div class="flex items-baseline gap-2">
+                        <span class="stat-number text-2xl">42%</span>
+                        <span class="stat-label">criam algo que ninguém queria*</span>
+                    </div>
+                    <p class="text-xs text-[#94a3b8] mt-1">*Fonte: CB Insights (2023)</p>
 
-    <!-- Módulo 3 – Plano de Contas Gerencial (tabela completa) -->
-    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
-      <div class="flex items-center gap-3 border-b pb-4"><span class="text-3xl">📋</span><h2 class="text-2xl font-bold">Módulo 3 · Plano de Contas Gerencial</h2></div>
-      <p class="mb-4">A estrutura hierárquica que organiza todas as movimentações financeiras. Versão inicial de Lucas (categorias essenciais).</p>
-      <div class="overflow-x-auto">
-        <table class="min-w-full text-sm border">
-          <thead class="bg-slate-100"><tr><th>Código</th><th>Conta</th><th>Sinal</th><th>Exemplo prático</th></tr></thead>
-          <tbody>
-            <tr><td class="p-2">01</td><td class="font-mono">RECEITA</td><td class="text-emerald-600">(+)</td><td>Mensalidades SaaS, Setup</td></tr>
-            <tr><td class="p-2">02</td><td>Impostos sobre Receita</td><td class="text-rose-600">(−)</td><td>ISS / Simples Nacional</td></tr>
-            <tr><td class="p-2">03</td><td>Custos (nuvem, gateway)</td><td class="text-rose-600">(−)</td><td>AWS, taxas de pagamento</td></tr>
-            <tr><td class="p-2">04</td><td>Despesas (Vendas, Marketing, Admin, Gerais)</td><td class="text-rose-600">(−)</td><td>Contador, coworking, anúncios</td></tr>
-            <tr><td class="p-2">05</td><td>Resultado Financeiro</td><td class="text-amber-600">(+/−)</td><td>Rendimentos / juros</td></tr>
-            <tr class="bg-slate-50"><td class="p-2">08</td><td>Investimentos Imobilizado</td><td class="text-rose-600">(−)</td><td>Computador, móveis (não afeta DRE)</td></tr>
-            <tr class="bg-slate-50"><td class="p-2">12</td><td>Aportes de Capital</td><td class="text-emerald-600">(+)</td><td>Subvenção, injeção de sócios</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="mt-4 text-sm text-slate-500 bg-blue-50 p-3 rounded-xl">✔️ Plano gerencial é personalizável, diferente do plano contábil obrigatório. As contas 07 a 12 afetam o CAIXA mas não o LUCRO.</div>
-    </section>
+                    <div class="mt-4 bg-[#f1f5f9] p-4 rounded-2xl">
+                        <span class="quote-mark block -mb-4">“</span>
+                        <p class="text-sm font-medium italic text-[#0f172a]">“If I had asked people what they wanted, they would have said faster horses”</p>
+                        <p class="text-xs font-semibold text-[#2563eb] mt-1">— Henry Ford</p>
+                    </div>
+                </div>
 
-    <!-- Módulo 4 – Fluxo de Caixa e Conciliação Bancária (tabelas + gráfico) -->
-    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
-      <div class="flex items-center gap-3"><span class="text-3xl">🏦</span><h2 class="text-2xl font-bold">Módulo 4 · Fluxo de Caixa + Conciliação Bancária</h2></div>
-      <p class="mt-2">Base de dados de Lucas: cada movimentação classificada por plano de contas e datas de pagamento.</p>
-      <div class="overflow-x-auto mt-4">
-        <table class="min-w-full text-xs md:text-sm border">
-          <thead class="bg-slate-100"><tr><th>Data Pgto</th><th>Valor (R$)</th><th>Plano de Contas</th><th>Observação</th></tr></thead>
-          <tbody>
-            <tr><td class="p-2">20/03</td><td class="font-mono">+300,00</td><td>01.01 Receita SaaS</td><td>Mensalidade Clínica Vida Nova</td></tr>
-            <tr><td class="p-2">20/03</td><td class="font-mono">+500,00</td><td>01.02 Setup</td><td>Implantação</td></tr>
-            <tr><td class="p-2">05/03</td><td class="font-mono text-rose-600">-850,00</td><td>03.01 Custo Nuvem</td><td>AWS março</td></tr>
-            <tr><td class="p-2">10/03</td><td class="font-mono text-rose-600">-900,00</td><td>04.04 Desp. Gerais</td><td>Coworking</td></tr>
-            <tr><td class="p-2">20/03</td><td class="font-mono text-rose-600">-6.000,00</td><td>08 Investimento</td><td>Computador novo (imobilizado)</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="grid md:grid-cols-2 gap-5 mt-6">
-        <div class="bg-slate-800 text-white p-4 rounded-2xl"><span class="font-bold">💧 Fluxo Realizado (março)</span><p class="text-sm">Entradas: R$800 | Saídas: R$8.100 → Saldo negativo, mas R$6.000 foi investimento.</p></div>
-        <div class="bg-blue-50 p-4 rounded-2xl"><span class="font-bold">🔮 Fluxo Projetado (abril)</span><p class="text-sm">MRR esperado: R$1.200 + setup R$500. Custos fixos R$2.050. Projeção evita surpresas.</p></div>
-      </div>
-      <canvas id="fluxoRealChart" class="mt-6 max-h-56" width="500" height="220"></canvas>
-      <p class="text-xs text-center text-slate-500 mt-2">Gráfico: entradas e saídas reais de Lucas (Janeiro a Março) – destaque para o impacto do investimento em março.</p>
-    </section>
+                <!-- Atividade -->
+                <div class="card p-6 activity-box">
+                    <h3 class="section-sub text-base flex items-center gap-2">✍️ Atividade em Grupo</h3>
+                    <p class="text-sm text-[#475569] mt-2"><span class="font-bold">Tarefa:</span> Listem 3 <span class="text-red-500">"achismos"</span> sobre o tema escolhido.</p>
+                    <div class="mt-3 space-y-2">
+                        <div class="bg-white p-3 rounded-xl border border-[#e2e8f0] text-sm">
+                            <span class="font-medium">Exemplo (Alimentação):</span>
+                            <ul class="list-disc list-inside text-[#475569] mt-1 text-xs">
+                                <li>"Acho que todo mundo quer comer saudável"</li>
+                                <li>"Acho que os jovens amam delivery"</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-3 bg-[#2563eb] text-white text-xs font-bold px-3 py-1.5 rounded-full inline-block">⏱️ 3 min</div>
+                </div>
+            </div>
 
-    <!-- Módulo 5 – Precificação e Custeio Variável (Tabela fixos x variáveis + MC + ponto equilíbrio) -->
-    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
-      <div class="flex items-center gap-3"><span class="text-3xl">📊</span><h2 class="text-2xl font-bold">Módulo 5 · Precificação e Custeio Variável</h2></div>
-      <p class="mb-3">Lucas estruturou os planos Bronze, Prata e Ouro. Para definir preços, separou custos fixos de variáveis.</p>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div>
-          <h3 class="font-bold text-md">📌 Custos Fixos vs. Variáveis (Lucas)</h3>
-          <table class="w-full text-sm border mt-2">
-            <thead><tr class="bg-slate-100"><th>Item</th><th>Valor (R$)</th><th>Natureza</th></tr></thead>
-            <tbody>
-              <tr><td>AWS (nuvem)</td><td>850,00</td><td>Variável (cresce com clientes)</td></tr>
-              <tr><td>Gateway %</td><td>2% s/ receita</td><td>Variável</td></tr>
-              <tr><td>Contador</td><td>350,00</td><td>Fixo</td></tr>
-              <tr><td>Coworking</td><td>900,00</td><td>Fixo</td></tr>
-              <tr><td>Marketing digital</td><td>500,00</td><td>Fixo</td></tr>
-              <tr class="font-semibold"><td>TOTAL FIXO MENSAL</td><td>R$ 2.050</td><td></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <h3 class="font-bold">🥇 Plano Prata (exemplo)</h3>
-          <p>Preço: R$ 299,90 | Custo variável ~R$60 (gateway + nuvem proporcional)</p>
-          <p>Margem de Contribuição (MC) = R$ 239,90 | IMC = 80%</p>
-          <p class="font-mono bg-slate-100 p-2 rounded">Ponto de Equilíbrio = R$ 2.050 / R$ 239,90 ≈ 8,5 → 9 clientes</p>
-          <div class="mt-3 text-xs bg-amber-50 p-2 rounded">⚡ Margem de Contribuição ≠ Margem Bruta (a bruta deduz todos os custos, a MC só os variáveis).</div>
-        </div>
-      </div>
-      <div class="overflow-x-auto mt-5">
-        <table class="min-w-full text-sm border">
-          <thead><tr class="bg-blue-50"><th>Plano</th><th>Preço sugerido</th><th>MC estimada</th><th>IMC (%)</th></tr></thead>
-          <tbody><tr><td>🥉 Bronze</td><td>R$ 149,90</td><td>R$ 110</td><td>73%</td></tr>
-          <tr><td>🥈 Prata</td><td>R$ 299,90</td><td>R$ 240</td><td>80%</td></tr>
-          <tr><td>🥇 Ouro</td><td>R$ 599,90</td><td>R$ 510</td><td>85%</td></tr></tbody>
-        </table>
-      </div>
-    </section>
+            <!-- Apresentação Rápida -->
+            <div class="rapid-fire rounded-2xl p-4 mt-4 flex items-center justify-between flex-wrap gap-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎤</span>
+                    <span class="font-bold text-sm">Apresentação Rápida</span>
+                    <span class="bg-[#2563eb] text-white text-[0.6rem] font-bold px-2 py-0.5 rounded-full">1 min</span>
+                </div>
+                <p class="text-sm text-[#475569]">Cada grupo: nome + 1 achismo</p>
+            </div>
+        </section>
 
-    <!-- Módulo 6 – Forecast: Projetado vs. Realizado (tabela comparativa) -->
-    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
-      <div class="flex items-center gap-3"><span class="text-3xl">🔮</span><h2 class="text-2xl font-bold">Módulo 6 · Forecast: Projetado vs. Realizado</h2></div>
-      <p>Lucas compara mês a mês o planejado com o executado — ferramenta de aprendizado contínuo.</p>
-      <div class="overflow-x-auto mt-4">
-        <table class="min-w-full text-sm border">
-          <thead class="bg-slate-100"><tr><th>Item</th><th>Projetado Abril</th><th>Realizado Abril</th><th>Variação</th><th>Interpretação</th></tr></thead>
-          <tbody>
-            <tr><td class="p-2">MRR</td><td>R$ 1.200</td><td>R$ 1.500</td><td class="text-emerald-600">+R$ 300</td><td>✅ vendas acima da meta</td></tr>
-            <tr><td class="p-2">Setup</td><td>R$ 500</td><td>R$ 200</td><td class="text-rose-600">-R$ 300</td><td>⚠️ menos clientes novos</td></tr>
-            <tr><td class="p-2">Custo Nuvem</td><td>R$ 850</td><td>R$ 920</td><td class="text-rose-600">-R$ 70</td><td>⚠️ revisar plano AWS</td></tr>
-            <tr class="font-semibold"><td>Resultado Líquido</td><td>-R$ 1.200</td><td>-R$ 1.270</td><td class="text-rose-600">-R$ 70</td><td>necessário ajuste</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="bg-slate-50 p-3 rounded-xl mt-4 text-sm">📌 Lição: comparar projeção e realizado gera ações corretivas antes de o caixa apertar.</div>
-    </section>
+        <!-- ====== ETAPA 2 ====== -->
+        <section class="reveal">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="step-badge">ETAPA 2</span>
+                <span class="text-sm font-bold text-[#2563eb]">7 min</span>
+                <span class="text-sm text-[#64748b]">Persona e Hipótese de Dor</span>
+            </div>
 
-    <!-- Módulo 7 – DRE Gerencial (tabela completa + margem comparativa) -->
-    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
-      <div class="flex items-center gap-3"><span class="text-3xl">📈</span><h2 class="text-2xl font-bold">Módulo 7 · DRE Gerencial</h2></div>
-      <p class="mb-4">Demonstração do Resultado do Exercício (regime de competência). Exemplo numérico da startup de Lucas.</p>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-slate-50 p-5 rounded-2xl">
-          <div class="flex justify-between border-b pb-1"><span>(+) Receita Bruta (MRR + Setup)</span><span class="font-mono">R$ 2.600</span></div>
-          <div class="flex justify-between text-rose-600"><span>(–) Impostos (10%)</span><span>-R$ 260</span></div>
-          <div class="flex justify-between font-semibold"><span>(=) Receita Líquida</span><span>R$ 2.340</span></div>
-          <div class="flex justify-between"><span>(–) Custos Totais</span><span>-R$ 920</span></div>
-          <div class="flex justify-between text-emerald-700"><span>(=) Lucro Bruto (Margem Bruta 60,7%)</span><span>R$ 1.420</span></div>
-          <div class="flex justify-between"><span>(–) Despesas Operacionais</span><span>-R$ 1.750</span></div>
-          <div class="flex justify-between border-t pt-1 font-bold"><span>Lucro Líquido do período</span><span class="text-rose-600">-R$ 330</span></div>
-        </div>
-        <div class="space-y-4">
-          <div class="bg-blue-50 p-4 rounded-xl"><span class="font-bold">📌 Caixa ≠ Competência:</span> Venda a prazo afeta DRE hoje, caixa só no futuro.</div>
-          <div class="bg-blue-50 p-4 rounded-xl"><span class="font-bold">📌 Imobilizado não é despesa:</span> Computador R$6.000 não entra na DRE como custo/despesa, fica no ativo.</div>
-          <div class="bg-blue-50 p-4 rounded-xl"><span class="font-bold">📌 Margem de Contribuição vs Margem Bruta:</span> MC = só variáveis; MB = todos custos. Diferentes análises.</div>
-        </div>
-      </div>
-    </section>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card p-6">
+                    <h3 class="section-sub text-base flex items-center gap-2">👤 Persona - O Alvo da Dor</h3>
+                    <div class="mt-3 bg-[#f8fafc] p-4 rounded-2xl border border-[#e2e8f0]">
+                        <p><span class="font-bold">Nome:</span> João Pedro</p>
+                        <p><span class="font-bold">Idade:</span> 22 anos</p>
+                        <p><span class="font-bold">Rotina:</span> Estagiário + estudante, chega 23h30</p>
+                        <div class="mt-2 bg-[#2563eb10] p-3 rounded-xl">
+                            <p class="font-semibold text-sm">Frustração:</p>
+                            <p class="text-sm italic text-[#475569]">“Chego morto de fome, sem energia pra cozinhar e sem grana pra delivery”</p>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Módulo 8 – Gerencial vs Contábil + checklist documentos -->
-    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
-      <div class="flex items-center gap-3"><span class="text-3xl">⚖️</span><h2 class="text-2xl font-bold">Módulo 8 · Gerencial vs. Contábil</h2></div>
-      <div class="grid md:grid-cols-2 gap-6 mt-3">
-        <div>
-          <table class="w-full text-sm border">
-            <thead class="bg-slate-100"><tr><th>Aspecto</th><th>Gestão Gerencial</th><th>Contabilidade</th></tr></thead>
-            <tbody>
-              <tr><td class="p-2">Objetivo</td><td>Tomada de decisão</td><td>Conformidade fiscal, legal</td></tr>
-              <tr><td class="p-2">Plano de Contas</td><td>Livre, adaptado</td><td>Normas (CFC, IFRS)</td></tr>
-              <tr><td class="p-2">Regime</td><td>Caixa ou Competência</td><td>Competência obrigatório</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="bg-amber-50 p-4 rounded-2xl"><span class="font-bold">📋 Checklist mensal para o contador:</span>
-          <ul class="list-disc list-inside text-sm mt-2"><li>Extratos bancários (todas contas)</li><li>Notas fiscais emitidas/recebidas</li><li>Contratos de clientes, comprovantes de pagamento</li><li>Retiradas de sócios, aportes, contratos de empréstimos</li><li>Relatório de bens (imobilizado)</li></ul>
-        </div>
-      </div>
-    </section>
+                <div class="card p-6">
+                    <h3 class="section-sub text-base flex items-center gap-2">🧪 Hipótese de Dor</h3>
+                    <div class="presentation-box-warning mb-3">
+                        <p class="text-xs font-bold text-red-600">❌ ACHISMO</p>
+                        <p class="text-sm text-[#475569]">"Jovens universitários querem comer comida saudável"</p>
+                    </div>
+                    <div class="presentation-box-success">
+                        <p class="text-xs font-bold text-green-600">✅ HIPÓTESE</p>
+                        <p class="text-sm text-[#0f172a] font-medium">"Jovens universitários que trabalham e estudam sofrem para encontrar opções de janta rápidas, baratas e que não sejam miojo"</p>
+                    </div>
+                    <p class="text-xs text-[#64748b] mt-3"><span class="font-bold">Fórmula:</span> “Pessoas como [Nome] sofrem porque...”</p>
+                </div>
+            </div>
 
-    <!-- Módulo 9 – Balanço Patrimonial para Iniciantes (tabela ativo/passivo/PL + indicadores) -->
-    <section class="bg-white rounded-3xl shadow-xl p-6 md:p-8 card-glass">
-      <div class="flex items-center gap-3"><span class="text-3xl">🏛️</span><h2 class="text-2xl font-bold">Módulo 9 · Balanço Patrimonial para Iniciantes</h2></div>
-      <p>Retrato financeiro da empresa em determinado momento. Estrutura simplificada de Lucas após os primeiros meses.</p>
-      <div class="grid md:grid-cols-2 gap-6 mt-4">
-        <div class="bg-emerald-50 p-4 rounded-xl"><span class="font-bold text-emerald-800">📦 ATIVO (o que a empresa TEM)</span>
-          <ul class="mt-2 text-sm"><li>💵 Caixa e Bancos: R$ 8.500</li><li>📆 Contas a Receber: R$ 2.400</li><li>📈 Aplicações: R$ 5.000</li><li>💻 Computador (imobilizado líquido): R$ 5.500</li><li class="font-bold mt-1">TOTAL ATIVO: R$ 21.400</li></ul>
-        </div>
-        <div class="bg-amber-50 p-4 rounded-xl"><span class="font-bold text-amber-800">📌 PASSIVO + PATRIMÔNIO LÍQUIDO</span>
-          <ul class="mt-2 text-sm"><li>🧾 Fornecedores a pagar: R$ 1.200</li><li>🏛️ Impostos a recolher: R$ 800</li><li>💼 Capital Social: R$ 22.000</li><li>📉 Prejuízos Acumulados: (R$ 600)</li><li class="font-bold mt-1">TOTAL PASSIVO + PL: R$ 21.400</li></ul>
-        </div>
-      </div>
-      <div class="grid grid-cols-2 gap-4 mt-4 text-center text-xs font-mono bg-slate-800 text-white p-4 rounded-2xl">
-        <div>Liquidez Corrente = Ativo Circ / Passivo Circ → 15.900/2.000 = 7,95</div>
-        <div>Endividamento = Passivo Total / Ativo Total → 2.000/21.400 = 9,3%</div>
-      </div>
-    </section>
+            <div class="activity-box mt-4 p-4">
+                <h3 class="section-sub text-base flex items-center gap-2">✍️ Atividade em Grupo</h3>
+                <p class="text-sm text-[#475569]"><span class="font-bold">Tarefa:</span> Criem uma persona e a Hipótese de Dor.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2 text-sm">
+                    <div class="bg-white p-3 rounded-xl border border-[#e2e8f0]">
+                        <span class="font-bold">1.</span> Nome e Idade
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-[#e2e8f0]">
+                        <span class="font-bold">2.</span> Rotina típica
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border border-[#e2e8f0] sm:col-span-2">
+                        <span class="font-bold">3.</span> Frustração + Hipótese
+                    </div>
+                </div>
+                <div class="mt-3 bg-[#2563eb] text-white text-xs font-bold px-3 py-1.5 rounded-full inline-block">⏱️ 4 min</div>
+            </div>
 
-    <!-- Encerramento: Checklist do Empreendedor + storyline final -->
-    <section class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-3xl shadow-2xl p-8 text-white">
-      <div class="flex items-center gap-3"><span class="text-4xl">🎯</span><h2 class="text-2xl font-bold">Encerramento · Checklist do Empreendedor Financeiramente Organizado</h2></div>
-      <p class="opacity-90 mt-2">Lucas transformou sua startup em um negócio organizado e recebeu aporte. Utilize este roteiro para os próximos 6 meses.</p>
-      <div class="grid md:grid-cols-2 gap-x-6 gap-y-2 mt-6 text-sm">
-        <div class="flex gap-2">☐ Plano de Contas Gerencial implementado</div><div class="flex gap-2">☐ Fluxo de Caixa Projetado (3 meses)</div>
-        <div class="flex gap-2">☐ Conciliação bancária semanal</div><div class="flex gap-2">☐ Ponto de equilíbrio calculado</div>
-        <div class="flex gap-2">☐ DRE Gerencial mensal</div><div class="flex gap-2">☐ Documentação completa para contador</div>
-        <div class="flex gap-2">☐ Entendo conceitos de Ativo, Passivo, PL</div><div class="flex gap-2">☐ Separo custos fixos e variáveis</div>
-      </div>
-      <p class="mt-8 text-center text-slate-200 text-sm border-t border-slate-700 pt-5 italic">“O caos financeiro não some sozinho — mas com método, ele vira clareza.”</p>
-      <p class="text-center text-xs text-slate-400 mt-3">START BSB · Jornada de Lucas Mendes — Material oficial da oficina de Gestão Financeira para Startups</p>
-    </section>
-  </main>
+            <div class="rapid-fire rounded-2xl p-4 mt-4 flex items-center justify-between flex-wrap gap-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎤</span>
+                    <span class="font-bold text-sm">Apresentação Rápida</span>
+                    <span class="bg-[#2563eb] text-white text-[0.6rem] font-bold px-2 py-0.5 rounded-full">1 min</span>
+                </div>
+                <p class="text-sm text-[#475569]">Persona + Hipótese de Dor</p>
+            </div>
+        </section>
 
-  <footer class="border-t border-slate-200 bg-white mt-16 py-6 text-center text-sm text-slate-400">
-    <p>📊 Todas as tabelas e demonstrativos baseados na história de Lucas Mendes | Uso exclusivo para oficina presencial.</p>
-  </footer>
+        <!-- ====== ETAPA 3 ====== -->
+        <section class="reveal">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="step-badge">ETAPA 3</span>
+                <span class="text-sm font-bold text-[#2563eb]">7 min</span>
+                <span class="text-sm text-[#64748b]">JTBD e Proposição de Valor</span>
+            </div>
 
-  <script>
-    // Gráfico de fluxo de caixa realizado (entradas vs saídas)
-    const ctx = document.getElementById('fluxoRealChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Janeiro', 'Fevereiro', 'Março (investimento)'],
-        datasets: [
-          { label: 'Entradas (R$)', data: [350, 800, 800], backgroundColor: '#2563eb', borderRadius: 8 },
-          { label: 'Saídas (R$)', data: [1850, 2050, 8100], backgroundColor: '#ef4444', borderRadius: 8 }
-        ]
-      },
-      options: { responsive: true, maintainAspectRatio: true, plugins: { tooltip: { callbacks: { label: (ctx) => `R$ ${ctx.raw}` } } } }
-    });
-  </script>
+            <div class="card p-6">
+                <h2 class="section-sub flex items-center gap-2">🧩 Jobs to Be Done (JTBD)</h2>
+                <p class="text-sm text-[#475569] mt-1 italic">“As pessoas não compram produtos. Elas 'contratam' produtos para fazer um 'trabalho'.” — Clayton Christensen</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+                    <div class="bg-[#f8fafc] p-3 rounded-2xl border border-[#e2e8f0]">
+                        <p class="font-bold text-sm">Dropbox</p>
+                        <p class="text-xs text-[#64748b]">Vende: sincronização</p>
+                        <p class="text-sm font-medium text-[#2563eb]">Job: “Ter meus arquivos em qualquer lugar”</p>
+                    </div>
+                    <div class="bg-[#f8fafc] p-3 rounded-2xl border border-[#e2e8f0]">
+                        <p class="font-bold text-sm">Slack</p>
+                        <p class="text-xs text-[#64748b]">Vende: canais</p>
+                        <p class="text-sm font-medium text-[#2563eb]">Job: “Tornar o trabalho menos ocupado”</p>
+                    </div>
+                    <div class="bg-[#f8fafc] p-3 rounded-2xl border border-[#e2e8f0]">
+                        <p class="font-bold text-sm">Uber</p>
+                        <p class="text-xs text-[#64748b]">Vende: carro com motorista</p>
+                        <p class="text-sm font-medium text-[#2563eb]">Job: “Chegar rápido sem me preocupar com estacionamento”</p>
+                    </div>
+                </div>
+
+                <div class="mt-4 bg-[#f1f5f9] p-4 rounded-2xl">
+                    <p class="font-bold text-sm text-[#0f172a]">📌 Proposição de Valor com JTBD</p>
+                    <p class="text-sm text-[#475569] mt-1">“Para <span class="font-semibold">João Pedro</span>, que <span class="font-semibold">precisa comer algo rápido e barato ao chegar em casa</span>, as <span class="font-semibold">sopas congeladas por assinatura</span> ajudam a cumprir esse trabalho porque <span class="font-semibold">é só esquentar</span>, ao contrário de miojo todo dia ou gastar R$40 no iFood.”</p>
+                    <p class="text-xs text-[#64748b] mt-2">💡 O JOB é o “o quê” – a solução é o “como”</p>
+                </div>
+            </div>
+
+            <div class="activity-box mt-4 p-4">
+                <h3 class="section-sub text-base flex items-center gap-2">✍️ Atividade em Grupo</h3>
+                <p class="text-sm text-[#475569]"><span class="font-bold">Tarefa:</span></p>
+                <ul class="list-disc list-inside text-sm text-[#475569] mt-1 space-y-1">
+                    <li>Identifiquem o <span class="font-bold">JOB</span> da persona</li>
+                    <li>Criem a <span class="font-bold">Proposição de Valor</span></li>
+                    <li>Listem <span class="font-bold">2 alternativas atuais</span></li>
+                </ul>
+                <div class="mt-3 bg-[#2563eb] text-white text-xs font-bold px-3 py-1.5 rounded-full inline-block">⏱️ 4 min</div>
+            </div>
+
+            <div class="rapid-fire rounded-2xl p-4 mt-4 flex items-center justify-between flex-wrap gap-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎤</span>
+                    <span class="font-bold text-sm">Apresentação Rápida</span>
+                    <span class="bg-[#2563eb] text-white text-[0.6rem] font-bold px-2 py-0.5 rounded-full">1 min</span>
+                </div>
+                <p class="text-sm text-[#475569]">JOB + Proposição de Valor</p>
+            </div>
+        </section>
+
+        <!-- ====== ETAPA 4 ====== -->
+        <section class="reveal">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="step-badge">ETAPA 4</span>
+                <span class="text-sm font-bold text-[#2563eb]">8 min</span>
+                <span class="text-sm text-[#64748b]">Mom Test - Roteiro de Entrevista</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card p-6">
+                    <h3 class="section-sub text-base flex items-center gap-2">🎤 The Mom Test</h3>
+                    <div class="presentation-box-warning mb-3">
+                        <p class="text-xs font-bold text-red-600">❌ Perguntas que geram mentiras</p>
+                        <ul class="list-disc list-inside text-sm text-[#475569]">
+                            <li>“Você compraria isso?”</li>
+                            <li>“O que você acha dessa ideia?”</li>
+                        </ul>
+                    </div>
+                    <div class="presentation-box-success">
+                        <p class="text-xs font-bold text-green-600">✅ Perguntas que geram fatos</p>
+                        <ul class="list-disc list-inside text-sm text-[#475569]">
+                            <li>“Me conte a última vez que isso aconteceu”</li>
+                            <li>“O que você fez para resolver?”</li>
+                        </ul>
+                    </div>
+                    <div class="mt-3 bg-[#f1f5f9] p-3 rounded-xl">
+                        <p class="text-xs font-bold">3 Mandamentos:</p>
+                        <ol class="list-decimal list-inside text-xs text-[#475569]">
+                            <li>Fale sobre a VIDA, NÃO sobre a ideia</li>
+                            <li>Pergunte sobre o PASSADO, NÃO o futuro</li>
+                            <li>Ouça MAIS do que fale</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="card p-6">
+                    <h3 class="section-sub text-base flex items-center gap-2">📋 Roteiro de 5 Perguntas</h3>
+                    <div class="space-y-2 mt-2">
+                        <div class="bg-[#f8fafc] p-2 rounded-xl text-sm flex items-start gap-2">
+                            <span class="bg-[#2563eb] text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</span>
+                            <div><span class="font-bold">Quebra-gelo:</span> "Qual sua rotina quando chega em casa?"</div>
+                        </div>
+                        <div class="bg-[#f8fafc] p-2 rounded-xl text-sm flex items-start gap-2">
+                            <span class="bg-[#2563eb] text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</span>
+                            <div><span class="font-bold">Fato:</span> "Quando foi a última vez que teve dificuldade com [Tema]?"</div>
+                        </div>
+                        <div class="bg-[#f8fafc] p-2 rounded-xl text-sm flex items-start gap-2">
+                            <span class="bg-[#2563eb] text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</span>
+                            <div><span class="font-bold">Alternativas:</span> "O que você fez para resolver?"</div>
+                        </div>
+                        <div class="bg-[#f8fafc] p-2 rounded-xl text-sm flex items-start gap-2">
+                            <span class="bg-[#2563eb] text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">4</span>
+                            <div><span class="font-bold">Emoção:</span> "O que você sentiu? (raiva? frustração?)"</div>
+                        </div>
+                        <div class="bg-[#f8fafc] p-2 rounded-xl text-sm flex items-start gap-2">
+                            <span class="bg-[#2563eb] text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">5</span>
+                            <div><span class="font-bold">Desejo:</span> "Se pudesse mudar uma coisa, o que seria?"</div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-red-500 font-bold mt-2">⚠️ NUNCA pergunte: "Você compraria isso?"</p>
+                </div>
+            </div>
+
+            <div class="activity-box mt-4 p-4">
+                <h3 class="section-sub text-base flex items-center gap-2">✍️ Atividade em Grupo</h3>
+                <p class="text-sm text-[#475569]"><span class="font-bold">Tarefa:</span></p>
+                <ul class="list-disc list-inside text-sm text-[#475569] space-y-1">
+                    <li>Adaptem o roteiro para o tema de vocês</li>
+                    <li>Dividam em duplas (entrevistador + persona)</li>
+                    <li>Simulem a entrevista (2-3 min por dupla)</li>
+                </ul>
+                <div class="mt-3 bg-[#2563eb] text-white text-xs font-bold px-3 py-1.5 rounded-full inline-block">⏱️ 5 min</div>
+            </div>
+
+            <div class="rapid-fire rounded-2xl p-4 mt-4 flex items-center justify-between flex-wrap gap-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎤</span>
+                    <span class="font-bold text-sm">Apresentação Rápida</span>
+                    <span class="bg-[#2563eb] text-white text-[0.6rem] font-bold px-2 py-0.5 rounded-full">1 min</span>
+                </div>
+                <p class="text-sm text-[#475569]">1 aprendizado surpreendente da simulação</p>
+            </div>
+        </section>
+
+        <!-- ====== ETAPA 5 ====== -->
+        <section class="reveal">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="step-badge">ETAPA 5</span>
+                <span class="text-sm font-bold text-[#2563eb]">6 min</span>
+                <span class="text-sm text-[#64748b]">Validação e Pivô</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card p-6">
+                    <h3 class="section-sub text-base flex items-center gap-2">🔍 O que é Validação</h3>
+                    <div class="presentation-box-warning mb-2">
+                        <p class="text-xs font-bold text-red-600">❌ NÃO é validação</p>
+                        <ul class="list-disc list-inside text-sm text-[#475569]">
+                            <li>“Que ideia legal!”</li>
+                            <li>“Me avisa quando lançar”</li>
+                        </ul>
+                    </div>
+                    <div class="presentation-box-success">
+                        <p class="text-xs font-bold text-green-600">✅ É validação</p>
+                        <ul class="list-disc list-inside text-sm text-[#475569]">
+                            <li>“Posso comprar o protótipo?”</li>
+                            <li>“Já tentei resolver isso de X forma”</li>
+                        </ul>
+                    </div>
+                    <p class="text-xs text-[#64748b] mt-3">“Fluff” são elogios – evidências são fatos</p>
+                </div>
+
+                <div class="card p-6">
+                    <h3 class="section-sub text-base flex items-center gap-2">🔄 Pivô - Aprendizado</h3>
+                    <div class="bg-[#f1f5f9] p-4 rounded-2xl text-center">
+                        <p class="text-sm font-bold text-[#2563eb]">3x mais chance de sucesso</p>
+                        <p class="text-xs text-[#64748b]">Startups que pivotam cedo*</p>
+                        <p class="text-[0.6rem] text-[#94a3b8] mt-1">*Fonte: Startup Genome Report</p>
+                    </div>
+                    <div class="flex flex-wrap items-center justify-center gap-1 mt-3 text-xs font-medium">
+                        <span class="bg-[#f1f5f9] px-3 py-1.5 rounded-full">🔍 Dor não era essa</span>
+                        <span class="flow-arrow">→</span>
+                        <span class="bg-[#f1f5f9] px-3 py-1.5 rounded-full">🧪 Solução não resolve</span>
+                        <span class="flow-arrow">→</span>
+                        <span class="bg-[#2563eb] text-white px-3 py-1.5 rounded-full">🚀 PIVÔ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-box mt-4 p-4">
+                <h3 class="section-sub text-base flex items-center gap-2">✍️ Atividade em Grupo</h3>
+                <p class="text-sm text-[#475569]"><span class="font-bold">Perguntas:</span></p>
+                <ol class="list-decimal list-inside text-sm text-[#475569] space-y-1">
+                    <li>A hipótese de dor se manteve?</li>
+                    <li>O JOB identificado faz sentido?</li>
+                    <li>Se pivotassem, o que mudariam?</li>
+                </ol>
+                <div class="mt-3 bg-[#2563eb] text-white text-xs font-bold px-3 py-1.5 rounded-full inline-block">⏱️ 3 min</div>
+            </div>
+
+            <div class="rapid-fire rounded-2xl p-4 mt-4 flex items-center justify-between flex-wrap gap-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎤</span>
+                    <span class="font-bold text-sm">Apresentação Rápida</span>
+                    <span class="bg-[#2563eb] text-white text-[0.6rem] font-bold px-2 py-0.5 rounded-full">1 min</span>
+                </div>
+                <p class="text-sm text-[#475569]">Hipótese validada + 1 pivô possível</p>
+            </div>
+        </section>
+
+        <!-- ====== ETAPA 6 ====== -->
+        <section class="reveal">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="step-badge">ETAPA 6</span>
+                <span class="text-sm font-bold text-[#2563eb]">5 min</span>
+                <span class="text-sm text-[#64748b]">Earlyvangelist e Desafio Final</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card p-6">
+                    <h3 class="section-sub text-base flex items-center gap-2">⭐ Earlyvangelist</h3>
+                    <ul class="list-disc list-inside text-sm text-[#475569] space-y-1.5 mt-2">
+                        <li>Já <span class="font-bold">TEM</span> o problema</li>
+                        <li><span class="font-bold">SABE</span> que tem o problema</li>
+                        <li>Já <span class="font-bold">tentou resolver</span> de forma caseira</li>
+                        <li>Tem <span class="font-bold">ORÇAMENTO</span> para resolver</li>
+                        <li>Quer resolver <span class="font-bold">AGORA</span></li>
+                    </ul>
+                    <p class="text-xs text-[#64748b] mt-3">Fonte: Geoffrey Moore, “Crossing the Chasm”</p>
+                </div>
+
+                <div class="card p-6 bg-[#0f172a] text-white">
+                    <h3 class="section-sub text-base flex items-center gap-2 text-white">🚀 Desafio Final</h3>
+                    <div class="mt-3 bg-[#1e293b] p-4 rounded-2xl">
+                        <p class="text-sm font-bold">Entreviste <span class="text-[#2563eb]">3 pessoas</span> até amanhã</p>
+                        <ul class="list-disc list-inside text-sm text-[#cbd5e1] space-y-1 mt-2">
+                            <li>❌ NÃO fale da sua ideia</li>
+                            <li>✅ Pergunte sobre a VIDA delas</li>
+                            <li>🎯 Procure os earlyvangelists</li>
+                        </ul>
+                    </div>
+                    <div class="mt-3 bg-[#2563eb] p-3 rounded-xl text-center">
+                        <p class="text-xs text-[#bfdbfe]">“Get out of the building”</p>
+                        <p class="text-sm font-semibold">— Steve Blank</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity-box mt-4 p-4">
+                <h3 class="section-sub text-base flex items-center gap-2">✍️ Atividade em Grupo</h3>
+                <p class="text-sm text-[#475569]"><span class="font-bold">Tarefa:</span></p>
+                <ul class="list-disc list-inside text-sm text-[#475569] space-y-1">
+                    <li>Listem 3 pessoas reais que seriam earlyvangelists</li>
+                    <li>Definam 1 pergunta extra que gostariam de fazer</li>
+                    <li>Criem um compromisso de entrevistar até amanhã</li>
+                </ul>
+                <div class="mt-3 bg-[#2563eb] text-white text-xs font-bold px-3 py-1.5 rounded-full inline-block">⏱️ 2 min</div>
+            </div>
+
+            <div class="rapid-fire rounded-2xl p-4 mt-4 flex items-center justify-between flex-wrap gap-2">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🎤</span>
+                    <span class="font-bold text-sm">Apresentação Rápida</span>
+                    <span class="bg-[#2563eb] text-white text-[0.6rem] font-bold px-2 py-0.5 rounded-full">1 min</span>
+                </div>
+                <p class="text-sm text-[#475569]">1 earlyvangelist + pergunta extra</p>
+            </div>
+        </section>
+
+        <!-- ====== FECHAMENTO ====== -->
+        <section class="card p-8 text-center reveal" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+            <h2 class="text-2xl font-extrabold text-white">🎯 Você está pronto para sair do achismo!</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 text-left max-w-2xl mx-auto">
+                <div class="bg-[#1e293b] p-3 rounded-xl text-white text-sm">
+                    <span class="text-[#2563eb] font-bold">🔹</span> Dor NÃO é opinião - é um FATO
+                </div>
+                <div class="bg-[#1e293b] p-3 rounded-xl text-white text-sm">
+                    <span class="text-[#2563eb] font-bold">🔹</span> Se não descreve em CENA, é achismo
+                </div>
+                <div class="bg-[#1e293b] p-3 rounded-xl text-white text-sm">
+                    <span class="text-[#2563eb] font-bold">🔹</span> JOB é o "o quê" - solução é o "como"
+                </div>
+                <div class="bg-[#1e293b] p-3 rounded-xl text-white text-sm">
+                    <span class="text-[#2563eb] font-bold">🔹</span> Pergunte sobre o PASSADO
+                </div>
+            </div>
+            <p class="text-[#94a3b8] text-sm mt-4">Boas validações! 🚀</p>
+        </section>
+
+        <!-- ====== FOOTER ====== -->
+        <footer class="text-center text-[0.65rem] text-[#94a3b8] border-t border-[#e2e8f0] pt-6 reveal">
+            <p>Frameworks: Problem/Solution Fit · Jobs to Be Done · The Mom Test</p>
+            <p class="mt-0.5">Fontes: CB Insights (2023) · Startup Genome · Steve Blank · Rob Fitzpatrick · Ash Maurya · Geoffrey Moore · Clayton Christensen</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // ========== REVELAÇÃO DE ELEMENTOS ==========
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.08 });
+        reveals.forEach(el => observer.observe(el));
+    </script>
+
 </body>
 </html>
-```
